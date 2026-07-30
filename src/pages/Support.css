@@ -1,0 +1,44 @@
+.support__email-link {
+  display: inline-block;
+  margin: 4px 0 8px;
+  font-size: 1.0625rem;
+}
+
+.support__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.support__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.support__button:hover {
+  color: var(--color-text);
+  background: var(--color-surface-selected);
+  transform: translateY(-1px);
+}
+
+.support__button--primary {
+  background: var(--color-primary);
+  border-color: rgba(22, 51, 0, 0.08);
+}
+
+.support__button--primary:hover {
+  background: #8fd95f;
+}
