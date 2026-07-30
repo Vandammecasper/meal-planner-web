@@ -11,9 +11,9 @@ export function Privacy() {
     >
       <Section title="Who we are">
         <p>
-          {APP_NAME} (“the App”) is a meal-planning application for households. It helps you
-          build a meal library, plan breakfast, lunch, and dinner, share plans with family
-          members, and keep a grocery list in sync.
+          {APP_NAME} is a meal-planning application for households. It helps you build a meal
+          library, plan breakfast, lunch, and dinner, share plans with family members, and keep a
+          grocery list in sync.
         </p>
         <p>
           If you have questions about this policy, contact us at{' '}

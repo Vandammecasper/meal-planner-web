@@ -3,7 +3,6 @@ import { APP_NAME } from '../theme';
 import './Layout.css';
 
 const navItems = [
-  { to: '/', label: 'Home', end: true },
   { to: '/privacy', label: 'Privacy' },
   { to: '/support', label: 'Support' },
   { to: '/user-agreement', label: 'User Agreement' },
@@ -15,7 +14,13 @@ export function Layout() {
       <header className="layout__header">
         <div className="layout__header-inner">
           <NavLink to="/" className="layout__brand" end>
-            <span className="layout__brand-mark" aria-hidden="true" />
+            <img
+              className="layout__brand-mark"
+              src="/logo.png"
+              alt=""
+              width={28}
+              height={28}
+            />
             <span className="layout__brand-name">{APP_NAME}</span>
           </NavLink>
           <nav className="layout__nav" aria-label="Legal pages">
@@ -23,7 +28,6 @@ export function Layout() {
               <NavLink
                 key={item.to}
                 to={item.to}
-                end={'end' in item ? item.end : false}
                 className={({ isActive }) =>
                   `layout__nav-link${isActive ? ' layout__nav-link--active' : ''}`
                 }
