@@ -1,5 +1,6 @@
+import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { APP_NAME } from '../theme';
+import { APP_NAME, SUPPORT_EMAIL, TESTFLIGHT_URL } from '../theme';
 import './Home.css';
 
 type FeatureIcon = 'plan' | 'meals' | 'import' | 'groceries' | 'scan' | 'fridge' | 'family' | 'widgets';
@@ -127,6 +128,151 @@ function FeatureGlyph({ icon }: { icon: FeatureIcon }) {
   }
 }
 
+function AppleGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+    </svg>
+  );
+}
+
+function AndroidGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M17.6 9.48 19.44 6.3a.62.62 0 0 0-.26-.85.63.63 0 0 0-.83.22l-1.88 3.24a8.86 8.86 0 0 0-8.94 0L5.65 5.67a.63.63 0 0 0-.87-.2.62.62 0 0 0-.22.83L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52ZM7 15.25A1.25 1.25 0 1 1 7 12.75 1.25 1.25 0 0 1 7 15.25Zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Z" />
+    </svg>
+  );
+}
+
+function androidRequestMailto(playStoreEmail: string) {
+  const subject = `${APP_NAME} – Android closed testing request`;
+  const body = [
+    'I would like to join the Plan my meal Android closed test.',
+    '',
+    `Play Store email: ${playStoreEmail}`,
+    '',
+    'Please add this Google account to the testing group and send me the install link.',
+  ].join('\n');
+
+  return `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function GetTheApp() {
+  const [androidOpen, setAndroidOpen] = useState(false);
+  const [playStoreEmail, setPlayStoreEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleAndroidSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const email = playStoreEmail.trim();
+    if (!email) return;
+
+    window.location.href = androidRequestMailto(email);
+    setSubmitted(true);
+  }
+
+  function toggleAndroid() {
+    setAndroidOpen((open) => {
+      if (open) setSubmitted(false);
+      return !open;
+    });
+  }
+
+  return (
+    <div className="home__get-app">
+      <p className="home__get-app-note">
+        The app is in testing, so these are beta invites rather than App Store or Play Store
+        listings.
+      </p>
+      <div className="home__store">
+        <a
+          className="home__store-btn home__store-btn--apple"
+          href={TESTFLIGHT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="home__store-btn-icon">
+            <AppleGlyph />
+          </span>
+          <span className="home__store-btn-copy">
+            <span className="home__store-btn-kicker">iPhone &amp; iPad</span>
+            <span className="home__store-btn-name">Join via TestFlight</span>
+          </span>
+        </a>
+        <button
+          type="button"
+          className={`home__store-btn home__store-btn--android${androidOpen ? ' home__store-btn--android-open' : ''}`}
+          aria-expanded={androidOpen}
+          aria-controls="android-access-form"
+          onClick={toggleAndroid}
+        >
+          <span className="home__store-btn-icon">
+            <AndroidGlyph />
+          </span>
+          <span className="home__store-btn-copy">
+            <span className="home__store-btn-kicker">Android</span>
+            <span className="home__store-btn-name">Request Play access</span>
+          </span>
+        </button>
+      </div>
+
+      {androidOpen ? (
+        <form id="android-access-form" className="home__android" onSubmit={handleAndroidSubmit}>
+          {submitted ? (
+            <div className="home__android-done">
+              <p className="home__android-status" role="status">
+                Your email app should open with a message to {SUPPORT_EMAIL}. Send it, and we will
+                add <strong>{playStoreEmail.trim()}</strong> to the closed test and reply with the
+                install link. If nothing opened, email that Play Store address to{' '}
+                <a href={androidRequestMailto(playStoreEmail.trim())}>{SUPPORT_EMAIL}</a>.
+              </p>
+              <button
+                className="home__android-again"
+                type="button"
+                onClick={() => setSubmitted(false)}
+              >
+                Send another request
+              </button>
+            </div>
+          ) : (
+            <>
+              <h2 className="home__android-title">Join the Android closed test</h2>
+              <p className="home__android-lede">
+                Google Play testing is invite-only for now. Enter the Google account you are
+                signed into on the Play Store on your phone. We will add it to the test group and
+                email you the install link.
+              </p>
+              <label className="home__android-label" htmlFor="play-store-email">
+                Play Store email
+              </label>
+              <input
+                id="play-store-email"
+                className="home__android-input"
+                type="email"
+                name="playStoreEmail"
+                autoComplete="email"
+                inputMode="email"
+                required
+                autoFocus
+                placeholder="you@gmail.com"
+                value={playStoreEmail}
+                onChange={(event) => setPlayStoreEmail(event.target.value)}
+              />
+              <p className="home__android-hint">
+                This is the account in the Play Store app (often under Settings → Account), which
+                may differ from the email you use in {APP_NAME}.
+              </p>
+              <button className="home__android-submit" type="submit">
+                Email my request
+              </button>
+            </>
+          )}
+        </form>
+      ) : null}
+    </div>
+  );
+}
+
 export function Home() {
   return (
     <div className="home">
@@ -137,6 +283,7 @@ export function Home() {
           Plan the week, keep a shared meal library, shop from a list that matches your plan, and
           use what is already in the fridge — together with the people you cook for.
         </p>
+        <GetTheApp />
       </section>
 
       <section className="home__features" aria-labelledby="features-heading">

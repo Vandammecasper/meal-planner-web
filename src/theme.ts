@@ -19,3 +19,4 @@ export const Colors = {
 export const SUPPORT_EMAIL = 'caspervandamme03@gmail.com';
 export const APP_NAME = 'Plan my meal';
 export const LAST_UPDATED = 'September 1, 2026';
+export const TESTFLIGHT_URL = 'https://testflight.apple.com/join/fDd2Ckyz';
