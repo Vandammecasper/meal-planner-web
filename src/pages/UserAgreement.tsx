@@ -23,9 +23,11 @@ export function UserAgreement() {
 
       <Section title="The service">
         <p>
-          {APP_NAME} provides tools to save meals, plan weekly meals for your household, share
-          planning with invited family members, and track grocery needs. Features may change over
-          time as we improve the App.
+          {APP_NAME} provides tools to save meals (including bulk import from a file you provide),
+          plan meals for your household by day or month, share planning with invited family
+          members, track grocery needs, scan product barcodes while shopping, keep a fridge
+          inventory, and — on supported devices — show plan summaries on the home screen. Features
+          may change over time as we improve the App.
         </p>
       </Section>
 
@@ -50,14 +52,30 @@ export function UserAgreement() {
 
       <Section title="Households and shared content">
         <p>
-          When you join a household, other members can see shared meals, plans, grocery data, and
-          profile details needed for collaboration. Admins can invite or remove members and change
-          certain household settings.
+          When you join a household, other members can see shared meals, plans, grocery data,
+          fridge inventory, and profile details needed for collaboration. Admins can invite or
+          remove members and change certain household settings. Private plan entries are intended
+          to be visible only to the person who planned them in the App, but they are stored with
+          household data so they can sync across that person’s devices.
         </p>
         <p>
-          You are responsible for the content you add (meal names, ingredients, notes, and similar
-          text). Do not post unlawful, abusive, or infringing content, and do not attempt to access
-          another household’s data without permission.
+          You are responsible for the content you add (meal names, ingredients, notes, imported
+          files, and similar text). Do not post unlawful, abusive, or infringing content, and do
+          not attempt to access another household’s data without permission.
+        </p>
+      </Section>
+
+      <Section title="Device features and third parties">
+        <p>
+          Barcode scanning uses your device camera, with your permission, to read product codes.
+          Looking up a product name may send the barcode to Open Food Facts, an independent public
+          database. Camera access is optional; refusing it only turns off scanning.
+        </p>
+        <p>
+          Home-screen widgets, where available, show meal names from your plan on the device. The
+          App also uses service providers described in our{' '}
+          <Link to="/privacy">Privacy Policy</Link> (including cloud hosting and product
+          analytics) to operate the service.
         </p>
       </Section>
 
@@ -82,9 +100,11 @@ export function UserAgreement() {
 
       <Section title="Disclaimers">
         <p>
-          The App is provided “as is” and “as available.” Meal plans and grocery lists are tools to
-          help you organize cooking; they are not professional dietary, medical, or allergen advice.
-          You are responsible for checking ingredients and suitability for your household.
+          The App is provided “as is” and “as available.” Meal plans, grocery lists, fridge
+          matching, and barcode lookups are tools to help you organize cooking; they are not
+          professional dietary, medical, or allergen advice, and product matches may be incomplete
+          or incorrect. You are responsible for checking ingredients and suitability for your
+          household.
         </p>
         <p>
           To the fullest extent permitted by law, we disclaim warranties of merchantability, fitness

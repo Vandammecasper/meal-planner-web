@@ -23,7 +23,7 @@ export function Layout() {
             />
             <span className="layout__brand-name">{APP_NAME}</span>
           </NavLink>
-          <nav className="layout__nav" aria-label="Legal pages">
+          <nav className="layout__nav" aria-label="Site">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
@@ -47,8 +47,13 @@ export function Layout() {
         <div className="layout__footer-inner">
           <p className="layout__footer-brand">{APP_NAME}</p>
           <p className="layout__footer-meta">
-            Meal planning for households · © {new Date().getFullYear()}
+            Plan, shop, and cook together · © {new Date().getFullYear()}
           </p>
+          <nav className="layout__footer-links" aria-label="Footer">
+            <NavLink to="/privacy">Privacy</NavLink>
+            <NavLink to="/support">Support</NavLink>
+            <NavLink to="/user-agreement">User Agreement</NavLink>
+          </nav>
         </div>
       </footer>
     </div>

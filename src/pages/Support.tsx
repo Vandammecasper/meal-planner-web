@@ -60,8 +60,29 @@ export function Support() {
           username.
         </p>
         <p>
-          <strong>Shared meals</strong> — Non-admin members may submit meals or plan changes for
-          approval. Admins review pending items before they appear for everyone.
+          <strong>Shared meals and plans</strong> — Non-admin members may submit meals or plan
+          changes for approval. Admins review pending items before they appear for everyone. You
+          can also plan a private meal only you see, or a one-off (such as a restaurant) without
+          saving it to the meal library.
+        </p>
+        <p>
+          <strong>Grocery list and scanning</strong> — The shopping list is built from your plan
+          for the selected week. Checking an item off adds it to the fridge. On Groceries, you can
+          scan a barcode to match a product to the list. Camera permission is required for
+          scanning; if a product is not found, you can still check the item off by hand.
+        </p>
+        <p>
+          <strong>Fridge</strong> — Open Groceries and switch to Fridge to add what you already
+          have. The Meals and Plan screens can highlight recipes that match leftover ingredients.
+          Stock is reduced after planned meals for past days.
+        </p>
+        <p>
+          <strong>Importing meals</strong> — Admins and solo households can import a CSV of meals
+          from the Meals tab. Use the in-app template if you are unsure of the columns.
+        </p>
+        <p>
+          <strong>Widgets</strong> — On iOS you can add Today’s Plan or Plan Overview to the home
+          screen. If a widget looks stale, open the app so it can refresh.
         </p>
         <p>
           <strong>Deleting your account</strong> — Go to Account in the App and follow the delete

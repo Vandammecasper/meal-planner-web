@@ -1,12 +1,12 @@
-# Plan my meal — legal & support site
+# Plan my meal — website
 
-React site for **Plan my meal** privacy, support, and user agreement pages. Styling matches the mobile app (Sulu green `#9FE870`, Deep fir `#163300`, cream canvas `#FAF7F0`, Spline Sans).
+React site for **Plan my meal**: a product overview of the current app, plus privacy, support, and user agreement pages. Styling matches the mobile app (Sulu green `#9FE870`, Deep fir `#163300`, cream canvas `#FAF7F0`, Spline Sans).
 
 ## Pages
 
 | Path | Page |
 |------|------|
-| `/` | Home |
+| `/` | Home (current app features) |
 | `/privacy` | Privacy Policy |
 | `/support` | Support |
 | `/user-agreement` | User Agreement |
