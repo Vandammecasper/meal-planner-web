@@ -3,7 +3,31 @@ import { Link } from 'react-router-dom';
 import { APP_NAME, SUPPORT_EMAIL, TESTFLIGHT_URL } from '../theme';
 import './Home.css';
 
+type ProblemIcon = 'dinner' | 'time' | 'shop' | 'waste';
 type FeatureIcon = 'plan' | 'meals' | 'import' | 'groceries' | 'scan' | 'fridge' | 'family' | 'widgets';
+
+const problems: { icon: ProblemIcon; title: string; body: string }[] = [
+  {
+    icon: 'dinner',
+    title: 'Tired of asking “what’s for dinner?”',
+    body: 'The question comes around every evening, and nobody has a good answer until it is already late.',
+  },
+  {
+    icon: 'time',
+    title: 'Spending too much time deciding what to cook',
+    body: 'You scroll recipes, debate options, and still default to whatever is fastest.',
+  },
+  {
+    icon: 'shop',
+    title: 'Buying groceries without a clear plan',
+    body: 'You walk the aisles guessing, pick up extras, and still miss what you actually need for the week.',
+  },
+  {
+    icon: 'waste',
+    title: 'Letting ingredients go to waste',
+    body: 'Half-used packages and leftovers sit in the fridge until they have to be thrown out.',
+  },
+];
 
 const features: { icon: FeatureIcon; title: string; body: string }[] = [
   {
@@ -83,6 +107,39 @@ const legalCards = [
     body: 'The terms that apply when you use the Plan my meal app.',
   },
 ] as const;
+
+function ProblemGlyph({ icon }: { icon: ProblemIcon }) {
+  switch (icon) {
+    case 'dinner':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 7.2A3.2 3.2 0 0 1 8.2 4h7.6A3.2 3.2 0 0 1 19 7.2v5.1A3.2 3.2 0 0 1 15.8 15.5H11L7 19v-3.5H8.2A3.2 3.2 0 0 1 5 12.3V7.2Z" />
+          <path d="M12 7.4c.85 0 1.45.52 1.45 1.28 0 .66-.38 1-.9 1.28-.4.22-.55.42-.55.82M12 12.4h.01" />
+        </svg>
+      );
+    case 'time':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="8" />
+          <path d="M12 8v4.2L15.2 15" />
+        </svg>
+      );
+    case 'shop':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 7h15l-1.4 8.2A2.5 2.5 0 0 1 16.15 17.5H9.4A2.5 2.5 0 0 1 6.95 15.2L5 7Z" />
+          <path d="M8 7 9.2 4.5h3.1M8.5 20.5h.01M16 20.5h.01" />
+        </svg>
+      );
+    case 'waste':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 20.5c-4 0-7-3.1-7-7.1C5 8.6 12 3.5 12 3.5s7 5.1 7 9.9c0 4-3 7.1-7 7.1Z" />
+          <path d="M12 3.5C12 3.5 11.1 7.2 8.6 8.8" />
+        </svg>
+      );
+  }
+}
 
 function FeatureGlyph({ icon }: { icon: FeatureIcon }) {
   switch (icon) {
@@ -307,6 +364,62 @@ export function Home() {
         <GetTheApp />
       </section>
 
+      <section className="home__problems" aria-labelledby="problems-heading">
+        <div className="home__section-head">
+          <h2 id="problems-heading" className="home__section-title">
+            Sound familiar?
+          </h2>
+          <p className="home__section-lede">
+            Dinner planning tends to fall apart in the same few places — and the cost is time,
+            stress, and food that never gets eaten.
+          </p>
+        </div>
+        <ul className="home__problem-grid">
+          {problems.map((problem) => (
+            <li key={problem.title} className="home__problem">
+              <span className="home__problem-icon">
+                <ProblemGlyph icon={problem.icon} />
+              </span>
+              <h3 className="home__problem-title">{problem.title}</h3>
+              <p className="home__problem-body">{problem.body}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="home__bridge">
+          <p className="home__bridge-title">That’s the loop. Here’s the way out.</p>
+          <p className="home__bridge-body">
+            {APP_NAME} turns those daily questions into a plan you can shop and cook from — with
+            everyone in the household on the same page.
+          </p>
+          <a className="home__cta-button" href="#get-the-app">
+            Get out now
+          </a>
+        </div>
+      </section>
+
+      <section className="home__features" aria-labelledby="features-heading">
+        <div className="home__section-head">
+          <h2 id="features-heading" className="home__section-title">
+            How it helps
+          </h2>
+          <p className="home__section-lede">
+            Plan the week, keep a meal library, shop from a list that matches the plan, and cook
+            from what is already in the fridge.
+          </p>
+        </div>
+        <ul className="home__feature-grid">
+          {features.map((feature) => (
+            <li key={feature.title} className="home__feature">
+              <span className="home__feature-icon">
+                <FeatureGlyph icon={feature.icon} />
+              </span>
+              <h3 className="home__feature-title">{feature.title}</h3>
+              <p className="home__feature-body">{feature.body}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section className="home__week" aria-labelledby="week-heading">
         <div className="home__section-head">
           <h2 id="week-heading" className="home__section-title">
@@ -328,29 +441,6 @@ export function Home() {
             </li>
           ))}
         </ol>
-      </section>
-
-      <section className="home__features" aria-labelledby="features-heading">
-        <div className="home__section-head">
-          <h2 id="features-heading" className="home__section-title">
-            What’s in the app
-          </h2>
-          <p className="home__section-lede">
-            The current {APP_NAME} app includes planning, groceries, a fridge, barcode scanning,
-            household sharing, and iOS widgets.
-          </p>
-        </div>
-        <ul className="home__feature-grid">
-          {features.map((feature) => (
-            <li key={feature.title} className="home__feature">
-              <span className="home__feature-icon">
-                <FeatureGlyph icon={feature.icon} />
-              </span>
-              <h3 className="home__feature-title">{feature.title}</h3>
-              <p className="home__feature-body">{feature.body}</p>
-            </li>
-          ))}
-        </ul>
       </section>
 
       <section className="home__cta" aria-labelledby="cta-heading">
