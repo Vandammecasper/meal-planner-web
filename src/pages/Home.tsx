@@ -4,6 +4,7 @@ import { APP_NAME, SUPPORT_EMAIL, TESTFLIGHT_URL } from '../theme';
 import './Home.css';
 
 type ProblemIcon = 'dinner' | 'time' | 'shop' | 'waste';
+type AudienceIcon = 'families' | 'health' | 'professionals' | 'students';
 type FeatureIcon = 'plan' | 'meals' | 'import' | 'groceries' | 'scan' | 'fridge' | 'family' | 'widgets';
 
 const problems: { icon: ProblemIcon; title: string; body: string }[] = [
@@ -90,6 +91,29 @@ const weekSteps = [
   },
 ] as const;
 
+const audiences: { icon: AudienceIcon; title: string; body: string }[] = [
+  {
+    icon: 'families',
+    title: 'Families',
+    body: 'Share one household plan, invite people by username, and keep the fridge in view so everyone knows what’s for dinner.',
+  },
+  {
+    icon: 'health',
+    title: 'Health-conscious cooks',
+    body: 'Save meals with categories and food types, then plan breakfast, lunch, and dinner around how you actually like to eat.',
+  },
+  {
+    icon: 'professionals',
+    title: 'Busy professionals',
+    body: 'Decide the week once, shop from a list that matches it, and skip the nightly scramble.',
+  },
+  {
+    icon: 'students',
+    title: 'Students',
+    body: 'Cook from what’s already in the fridge, waste less, and skip last-minute shops that empty the budget.',
+  },
+];
+
 const legalCards = [
   {
     to: '/privacy',
@@ -107,6 +131,39 @@ const legalCards = [
     body: 'The terms that apply when you use the Plan my meal app.',
   },
 ] as const;
+
+function AudienceGlyph({ icon }: { icon: AudienceIcon }) {
+  switch (icon) {
+    case 'families':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="9" cy="8" r="2.4" />
+          <circle cx="16" cy="9" r="2" />
+          <path d="M4.5 18.5c.6-3 2.6-4.7 4.5-4.7s3.9 1.7 4.5 4.7M13.2 13.9c1.7-.2 3.6 1.2 4.3 4.1" />
+        </svg>
+      );
+    case 'health':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 19.5S4.5 14.2 4.5 9.9A3.7 3.7 0 0 1 12 7.6 3.7 3.7 0 0 1 19.5 9.9C19.5 14.2 12 19.5 12 19.5Z" />
+        </svg>
+      );
+    case 'professionals':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="4" y="8" width="16" height="11.5" rx="2" />
+          <path d="M9 8V6.5A1.5 1.5 0 0 1 10.5 5h3A1.5 1.5 0 0 1 15 6.5V8M4 13h16" />
+        </svg>
+      );
+    case 'students':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4.5 6.8C6.6 5.7 8.8 5.7 12 7.2c3.2-1.5 5.4-1.5 7.5-.4v10.6c-2.1-1.1-4.3-1.1-7.5.4-3.2-1.5-5.4-1.5-7.5-.4V6.8Z" />
+          <path d="M12 7.2v10.6" />
+        </svg>
+      );
+  }
+}
 
 function ProblemGlyph({ icon }: { icon: ProblemIcon }) {
   switch (icon) {
@@ -415,6 +472,29 @@ export function Home() {
               </span>
               <h3 className="home__feature-title">{feature.title}</h3>
               <p className="home__feature-body">{feature.body}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="home__audience" aria-labelledby="audience-heading">
+        <div className="home__section-head">
+          <h2 id="audience-heading" className="home__section-title">
+            Who it’s for
+          </h2>
+          <p className="home__section-lede">
+            Built for anyone who is done guessing at dinner — whether you cook for a household, eat
+            with a plan, or just need the week decided before the day gets away from you.
+          </p>
+        </div>
+        <ul className="home__audience-grid">
+          {audiences.map((audience) => (
+            <li key={audience.title} className="home__audience-card">
+              <span className="home__audience-icon">
+                <AudienceGlyph icon={audience.icon} />
+              </span>
+              <h3 className="home__audience-title">{audience.title}</h3>
+              <p className="home__audience-body">{audience.body}</p>
             </li>
           ))}
         </ul>
