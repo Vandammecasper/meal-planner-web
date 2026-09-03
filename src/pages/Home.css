@@ -37,6 +37,7 @@
 
 .home__get-app {
   margin-top: 24px;
+  scroll-margin-top: 88px;
 }
 
 .home__get-app-note {
@@ -259,6 +260,106 @@
   max-width: 40rem;
   color: var(--color-text-secondary);
   font-size: 0.9875rem;
+}
+
+.home__steps {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 720px) {
+  .home__steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.home__step {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  border: 1px solid rgba(159, 232, 112, 0.35);
+}
+
+.home__step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 4px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-tint);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.home__step-title {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.home__step-body {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+}
+
+.home__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 32px 28px;
+  border-radius: var(--radius);
+  background:
+    linear-gradient(145deg, rgba(159, 232, 112, 0.4) 0%, rgba(159, 232, 112, 0.1) 50%, transparent 75%),
+    var(--color-surface);
+  border: 1px solid rgba(159, 232, 112, 0.55);
+}
+
+.home__cta-title {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.home__cta-body {
+  margin: 0;
+  max-width: 36rem;
+  color: var(--color-text-secondary);
+  font-size: 0.9875rem;
+}
+
+.home__cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(22, 51, 0, 0.08);
+  background: var(--color-primary);
+  color: var(--color-text);
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.home__cta-button:hover {
+  color: var(--color-text);
+  background: #8fd95f;
+  transform: translateY(-1px);
 }
 
 .home__feature-grid {

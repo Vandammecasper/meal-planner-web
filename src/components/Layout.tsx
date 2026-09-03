@@ -50,6 +50,7 @@ export function Layout() {
             Plan, shop, and cook together · © {new Date().getFullYear()}
           </p>
           <nav className="layout__footer-links" aria-label="Footer">
+            <a href="/#get-the-app">Get the app</a>
             <NavLink to="/privacy">Privacy</NavLink>
             <NavLink to="/support">Support</NavLink>
             <NavLink to="/user-agreement">User Agreement</NavLink>

@@ -48,6 +48,24 @@ const features: { icon: FeatureIcon; title: string; body: string }[] = [
   },
 ];
 
+const weekSteps = [
+  {
+    step: '1',
+    title: 'Plan the week',
+    body: 'Put breakfast, lunch, and dinner on the calendar. Share one household plan, keep a meal private, or add a one-off like takeout.',
+  },
+  {
+    step: '2',
+    title: 'Shop the list',
+    body: 'Ingredients from the plan become a grocery list, scaled to how many you cook for. Scan products in the aisle to check them off.',
+  },
+  {
+    step: '3',
+    title: 'Cook from the fridge',
+    body: 'Checked-off groceries move into a shared fridge. The app suggests meals you can make from leftovers, and uses stock as planned meals pass.',
+  },
+] as const;
+
 const legalCards = [
   {
     to: '/privacy',
@@ -182,7 +200,7 @@ function GetTheApp() {
   }
 
   return (
-    <div className="home__get-app">
+    <div className="home__get-app" id="get-the-app">
       <p className="home__get-app-note">
         The app is in testing, so these are beta invites rather than App Store or Play Store
         listings.
@@ -289,6 +307,29 @@ export function Home() {
         <GetTheApp />
       </section>
 
+      <section className="home__week" aria-labelledby="week-heading">
+        <div className="home__section-head">
+          <h2 id="week-heading" className="home__section-title">
+            How a week works
+          </h2>
+          <p className="home__section-lede">
+            Planning, shopping, and cooking stay on one loop, so the list matches the plan and the
+            fridge stays in the picture.
+          </p>
+        </div>
+        <ol className="home__steps">
+          {weekSteps.map((item) => (
+            <li key={item.step} className="home__step">
+              <span className="home__step-num" aria-hidden="true">
+                {item.step}
+              </span>
+              <h3 className="home__step-title">{item.title}</h3>
+              <p className="home__step-body">{item.body}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
       <section className="home__features" aria-labelledby="features-heading">
         <div className="home__section-head">
           <h2 id="features-heading" className="home__section-title">
@@ -310,6 +351,19 @@ export function Home() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="home__cta" aria-labelledby="cta-heading">
+        <h2 id="cta-heading" className="home__cta-title">
+          Try the beta
+        </h2>
+        <p className="home__cta-body">
+          {APP_NAME} is in testing on iPhone, iPad, and Android. Join through TestFlight, or request
+          Play Store access with the Google account on your phone.
+        </p>
+        <a className="home__cta-button" href="#get-the-app">
+          Get the app
+        </a>
       </section>
 
       <section className="home__legal" aria-labelledby="legal-heading">
