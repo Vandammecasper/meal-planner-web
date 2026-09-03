@@ -147,11 +147,14 @@ function AndroidGlyph() {
 function androidRequestMailto(playStoreEmail: string) {
   const subject = `${APP_NAME} – Android closed testing request`;
   const body = [
+    'Hello,',
+    '',
     'I would like to join the Plan my meal Android closed test.',
     '',
-    `Play Store email: ${playStoreEmail}`,
+    `My Play Store email: ${playStoreEmail}`,
     '',
-    'Please add this Google account to the testing group and send me the install link.',
+    'Thank you in advance for your help!',
+    'Best regards,',
   ].join('\n');
 
   return `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
