@@ -7,10 +7,20 @@ React site for **Plan my meal**: a product overview of the current app, plus pri
 | Path | Page |
 |------|------|
 | `/` | Home (current app features) |
+| `/shared-meal/:shareId` | Opens the native app for a shared meal (custom scheme / Android intent), with website fallback |
 | `/privacy` | Privacy Policy |
 | `/support` | Support |
 | `/user-agreement` | User Agreement |
 | `/terms` | Redirects to `/user-agreement` |
+
+## App link association
+
+Static files under `public/.well-known/`:
+
+- `assetlinks.json` — Android App Links for `com.caspervandamme.planmymeal` (debug keystore fingerprint today; add Play App Signing / release SHA-256 when publishing)
+- `apple-app-site-association` — iOS Universal Links paths for `/shared-meal/*` (replace `TEAMID` with your Apple Team ID before relying on Universal Links)
+
+Until those verify, `/shared-meal/:id` still tries `planmymeal://…` so an installed app can open from the browser.
 
 ## Develop
 
