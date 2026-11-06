@@ -12,8 +12,9 @@ export function Privacy() {
       <Section title="Who we are">
         <p>
           {APP_NAME} is a meal-planning application for households. It helps you build a meal
-          library, plan breakfast, lunch, and dinner, share plans with family members, keep a
-          grocery list in sync, track what is in the fridge, and scan products while you shop.
+          library, plan breakfast, lunch, and dinner, share plans and recipes with family members,
+          keep a grocery list in sync, and scan products while you shop. You can also continue as a
+          guest before creating a full account.
         </p>
         <p>
           If you have questions about this policy, contact us at{' '}
@@ -35,12 +36,11 @@ export function Privacy() {
           </li>
           <li>
             <strong>Household and planning data</strong> — family membership and roles, meals you
-            save (including ingredients, recipes, cook time, servings, categories, food types, and
-            optional source notes or links), weekly meal plans (including private meals visible
-            only to you in the App, and one-off titles such as takeout), grocery checklist state,
-            extra grocery items you add, fridge inventory (item names, quantities, and how they
-            were added), and related settings (such as household size and which meal slots you
-            plan).
+            save (including ingredients, recipes, cook time, servings, categories, food types,
+            kitchens, and optional source notes or links), shared meal links you create, weekly
+            meal plans (including private meals visible only to you in the App, and one-off titles
+            such as takeout), grocery checklist state, extra grocery items you add, and related
+            settings (such as household size and which meal slots you plan).
           </li>
           <li>
             <strong>Feature requests</strong> — feedback you submit through the in-app feature
@@ -73,10 +73,9 @@ export function Privacy() {
         <p>We use the information above to:</p>
         <ul>
           <li>Create and secure your account</li>
-          <li>
-            Sync meals, plans, groceries, and fridge contents across your devices and household
-          </li>
-          <li>Match scanned products to your grocery list and suggest meals from leftover food</li>
+          <li>Sync meals, plans, and groceries across your devices and household</li>
+          <li>Match scanned products to your grocery list while you shop</li>
+          <li>Let you share meal links and let recipients add those meals to their library</li>
           <li>Let family admins manage invites, roles, and shared planning settings</li>
           <li>Understand how the App is used so we can fix problems and improve it</li>
           <li>Respond to support requests</li>
@@ -114,9 +113,10 @@ export function Privacy() {
       <Section title="Sharing">
         <p>
           Household members you invite (or who invite you) can see shared family content such as
-          meals, plans, grocery items, fridge contents, and member profiles within that household.
-          Private plan entries are stored with household data so they can sync, but the App only
-          shows them to the person who planned them.
+          meals, plans, grocery items, and member profiles within that household. Private plan
+          entries are stored with household data so they can sync, but the App only shows them to
+          the person who planned them. People who receive a meal share link can see that meal’s
+          details in order to add it to their own library.
         </p>
         <p>
           We do not sell your personal information. We may share data with service providers that

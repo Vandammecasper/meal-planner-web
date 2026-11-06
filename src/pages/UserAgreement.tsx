@@ -25,9 +25,9 @@ export function UserAgreement() {
         <p>
           {APP_NAME} provides tools to save meals (including bulk import from a file you provide),
           plan meals for your household by day or month, share planning with invited family
-          members, track grocery needs, scan product barcodes while shopping, keep a fridge
-          inventory, and — on supported devices — show plan summaries on the home screen. Features
-          may change over time as we improve the App.
+          members, share individual meals via link, track grocery needs, scan product barcodes
+          while shopping, continue as a guest, and — on supported devices — show plan summaries on
+          the home screen. Features may change over time as we improve the App.
         </p>
       </Section>
 
@@ -52,11 +52,12 @@ export function UserAgreement() {
 
       <Section title="Households and shared content">
         <p>
-          When you join a household, other members can see shared meals, plans, grocery data,
-          fridge inventory, and profile details needed for collaboration. Admins can invite or
-          remove members and change certain household settings. Private plan entries are intended
-          to be visible only to the person who planned them in the App, but they are stored with
-          household data so they can sync across that person’s devices.
+          When you join a household, other members can see shared meals, plans, grocery data, and
+          profile details needed for collaboration. Admins can invite or remove members and change
+          certain household settings. Private plan entries are intended to be visible only to the
+          person who planned them in the App, but they are stored with household data so they can
+          sync across that person’s devices. Meal share links let recipients view that meal so they
+          can add it to their own library.
         </p>
         <p>
           You are responsible for the content you add (meal names, ingredients, notes, imported
@@ -100,8 +101,8 @@ export function UserAgreement() {
 
       <Section title="Disclaimers">
         <p>
-          The App is provided “as is” and “as available.” Meal plans, grocery lists, fridge
-          matching, and barcode lookups are tools to help you organize cooking; they are not
+          The App is provided “as is” and “as available.” Meal plans, grocery lists, meal
+          suggestions, and barcode lookups are tools to help you organize cooking; they are not
           professional dietary, medical, or allergen advice, and product matches may be incomplete
           or incorrect. You are responsible for checking ingredients and suitability for your
           household.

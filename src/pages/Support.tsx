@@ -63,26 +63,33 @@ export function Support() {
           <strong>Shared meals and plans</strong> — Non-admin members may submit meals or plan
           changes for approval. Admins review pending items before they appear for everyone. You
           can also plan a private meal only you see, or a one-off (such as a restaurant) without
-          saving it to the meal library.
+          saving it to the meal library. From a meal’s detail screen, share a link so someone else
+          can open it in the app and add it to their library.
+        </p>
+        <p>
+          <strong>Plan suggestions</strong> — On the Plan tab, empty breakfast, lunch, or dinner
+          slots can show a suggested meal from your library. Add it if it fits, or pick something
+          else.
         </p>
         <p>
           <strong>Grocery list and scanning</strong> — The shopping list is built from your plan
-          for the selected week. Checking an item off adds it to the fridge. On Groceries, you can
-          scan a barcode to match a product to the list. Camera permission is required for
-          scanning; if a product is not found, you can still check the item off by hand.
-        </p>
-        <p>
-          <strong>Fridge</strong> — Open Groceries and switch to Fridge to add what you already
-          have. The Meals and Plan screens can highlight recipes that match leftover ingredients.
-          Stock is reduced after planned meals for past days.
+          for the selected week. Check items off as you shop, and use Hide checked when you want a
+          shorter list. On Groceries, you can scan a barcode to match a product to the list.
+          Camera permission is required for scanning; if a product is not found, you can still
+          check the item off by hand.
         </p>
         <p>
           <strong>Importing meals</strong> — Admins and solo households can import a CSV of meals
           from the Meals tab. Use the in-app template if you are unsure of the columns.
         </p>
         <p>
-          <strong>Widgets</strong> — On iOS you can add Today’s Plan or Plan Overview to the home
-          screen. If a widget looks stale, open the app so it can refresh.
+          <strong>Widgets</strong> — On iPhone, iPad, and Android you can add Today’s Plan or Plan
+          Overview to the home screen. If a widget looks stale, open the app so it can refresh.
+        </p>
+        <p>
+          <strong>Guest sign-in</strong> — Choose Continue as a guest on the sign-in screen to try
+          the app without an email account. Create a full account later if you want a lasting
+          profile and recovery options.
         </p>
         <p>
           <strong>Deleting your account</strong> — Go to Account in the App and follow the delete

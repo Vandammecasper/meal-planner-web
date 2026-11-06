@@ -5,7 +5,16 @@ import './Home.css';
 
 type ProblemIcon = 'dinner' | 'time' | 'shop' | 'waste';
 type AudienceIcon = 'families' | 'health' | 'professionals' | 'students';
-type FeatureIcon = 'plan' | 'meals' | 'import' | 'groceries' | 'scan' | 'fridge' | 'family' | 'widgets';
+type FeatureIcon =
+  | 'plan'
+  | 'meals'
+  | 'import'
+  | 'groceries'
+  | 'scan'
+  | 'share'
+  | 'family'
+  | 'guest'
+  | 'widgets';
 
 const problems: { icon: ProblemIcon; title: string; body: string }[] = [
   {
@@ -26,7 +35,7 @@ const problems: { icon: ProblemIcon; title: string; body: string }[] = [
   {
     icon: 'waste',
     title: 'Letting ingredients go to waste',
-    body: 'Half-used packages and leftovers sit in the fridge until they have to be thrown out.',
+    body: 'You buy more than you need, forget what is already at home, and food gets thrown out unused.',
   },
 ];
 
@@ -34,12 +43,17 @@ const features: { icon: FeatureIcon; title: string; body: string }[] = [
   {
     icon: 'plan',
     title: 'Plan by day or month',
-    body: 'Map breakfast, lunch, and dinner, swipe between weeks, and move meals when plans change. Set servings per day, or hide meal slots you do not use.',
+    body: 'Map breakfast, lunch, and dinner, swipe between weeks, and move meals when plans change. Empty slots get a meal suggestion from your library. Set servings per day, or hide meal slots you do not use.',
   },
   {
     icon: 'meals',
     title: 'Build a meal library',
-    body: 'Save recipes with ingredients, instructions, cook time, servings, categories, and food types. Search and filter, including meals you can make from what is already in the fridge.',
+    body: 'Save recipes with ingredients, instructions, cook time, servings, categories, food types, and kitchens. Search and filter so you can find the right meal fast.',
+  },
+  {
+    icon: 'share',
+    title: 'Share meals via link',
+    body: 'Send a recipe with a link. Recipients open it in the app and can add it to their own meal library without retyping ingredients.',
   },
   {
     icon: 'import',
@@ -49,7 +63,7 @@ const features: { icon: FeatureIcon; title: string; body: string }[] = [
   {
     icon: 'groceries',
     title: 'A list from your plan',
-    body: 'Ingredients from planned meals are combined and scaled to how many people you cook for. Group them together or by meal, add extras, and check items off as you shop.',
+    body: 'Ingredients from planned meals are combined and scaled to how many people you cook for. Group them together or by meal, add extras, check items off as you shop, and hide checked items when you want a cleaner list.',
   },
   {
     icon: 'scan',
@@ -57,19 +71,19 @@ const features: { icon: FeatureIcon; title: string; body: string }[] = [
     body: 'Use the camera to scan product barcodes. The app looks up the product and matches it to your grocery list so you can check it off on the spot.',
   },
   {
-    icon: 'fridge',
-    title: 'Track the fridge',
-    body: 'Keep a shared fridge inventory. Checking off groceries adds them there. The app suggests meals you can cook from leftovers, and uses stock as planned meals pass.',
-  },
-  {
     icon: 'family',
     title: 'Cook as a household',
     body: 'Invite people by username to share one plan. Admins can review new meals and plan changes. Plan a private meal only you see, or a one-off like takeout without saving it to the library.',
   },
   {
+    icon: 'guest',
+    title: 'Try as a guest',
+    body: 'Continue as a guest to explore planning, your meal library, and groceries without creating an account first. Sign up later when you want a lasting profile.',
+  },
+  {
     icon: 'widgets',
     title: 'Home screen widgets',
-    body: 'On iOS, add Today’s Plan or Plan Overview to see the day’s meals and a month calendar without opening the app.',
+    body: 'On iPhone, iPad, and Android, add Today’s Plan or Plan Overview to see the day’s meals and a month calendar without opening the app.',
   },
 ];
 
@@ -77,17 +91,17 @@ const weekSteps = [
   {
     step: '1',
     title: 'Plan the week',
-    body: 'Put breakfast, lunch, and dinner on the calendar. Share one household plan, keep a meal private, or add a one-off like takeout.',
+    body: 'Put breakfast, lunch, and dinner on the calendar. Use a suggestion for an empty slot, keep a meal private, or add a one-off like takeout.',
   },
   {
     step: '2',
     title: 'Shop the list',
-    body: 'Ingredients from the plan become a grocery list, scaled to how many you cook for. Scan products in the aisle to check them off.',
+    body: 'Ingredients from the plan become a grocery list, scaled to how many you cook for. Scan products in the aisle, check them off, and hide checked items as you go.',
   },
   {
     step: '3',
-    title: 'Cook from the fridge',
-    body: 'Checked-off groceries move into a shared fridge. The app suggests meals you can make from leftovers, and uses stock as planned meals pass.',
+    title: 'Share and stay aligned',
+    body: 'Share recipes via link, cook from one household plan, and glance at today’s meals on a home-screen widget.',
   },
 ] as const;
 
@@ -95,7 +109,7 @@ const audiences: { icon: AudienceIcon; title: string; body: string }[] = [
   {
     icon: 'families',
     title: 'Families',
-    body: 'Share one household plan, invite people by username, and keep the fridge in view so everyone knows what’s for dinner.',
+    body: 'Share one household plan, invite people by username, and keep everyone clear on what’s for dinner.',
   },
   {
     icon: 'health',
@@ -110,10 +124,9 @@ const audiences: { icon: AudienceIcon; title: string; body: string }[] = [
   {
     icon: 'students',
     title: 'Students',
-    body: 'Cook from what’s already in the fridge, waste less, and skip last-minute shops that empty the budget.',
+    body: 'Plan a simple week, shop from one list, and skip last-minute shops that empty the budget. Try the app as a guest first.',
   },
 ];
-
 const legalCards = [
   {
     to: '/privacy',
@@ -233,11 +246,13 @@ function FeatureGlyph({ icon }: { icon: FeatureIcon }) {
           <path d="M4.5 8.5V6A1.5 1.5 0 0 1 6 4.5h2.5M15.5 4.5H18A1.5 1.5 0 0 1 19.5 6v2.5M4.5 15.5V18A1.5 1.5 0 0 0 6 19.5h2.5M15.5 19.5H18A1.5 1.5 0 0 0 19.5 18v-2.5M8 12h8" />
         </svg>
       );
-    case 'fridge':
+    case 'share':
       return (
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="6.5" y="3.5" width="11" height="17" rx="2" />
-          <path d="M6.5 11h11M9 6.5v2M9 13.5v3" />
+          <circle cx="18" cy="5.5" r="2.2" />
+          <circle cx="6" cy="12" r="2.2" />
+          <circle cx="18" cy="18.5" r="2.2" />
+          <path d="M8.1 10.9 15.9 6.6M8.1 13.1 15.9 17.4" />
         </svg>
       );
     case 'family':
@@ -246,6 +261,14 @@ function FeatureGlyph({ icon }: { icon: FeatureIcon }) {
           <circle cx="9" cy="8" r="2.4" />
           <circle cx="16" cy="9" r="2" />
           <path d="M4.5 18.5c.6-3 2.6-4.7 4.5-4.7s3.9 1.7 4.5 4.7M13.2 13.9c1.7-.2 3.6 1.2 4.3 4.1" />
+        </svg>
+      );
+    case 'guest':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="3" />
+          <path d="M5.5 19.5c.9-3.4 3.2-5.2 6.5-5.2s5.6 1.8 6.5 5.2" />
+          <path d="M16.5 5.5 19 8l-2.5 2.5" />
         </svg>
       );
     case 'widgets':
@@ -416,7 +439,7 @@ export function Home() {
         <h1 className="home__title">{APP_NAME}</h1>
         <p className="home__lede">
           Plan the week, keep a shared meal library, shop from a list that matches your plan, and
-          use what is already in the fridge — together with the people you cook for.
+          cook together with the people you cook for — or try it first as a guest.
         </p>
         <GetTheApp />
       </section>
@@ -460,8 +483,8 @@ export function Home() {
             How it helps
           </h2>
           <p className="home__section-lede">
-            Plan the week, keep a meal library, shop from a list that matches the plan, and cook
-            from what is already in the fridge.
+            Plan the week, keep a meal library, shop from a list that matches the plan, and share
+            recipes with the people you cook with.
           </p>
         </div>
         <ul className="home__feature-grid">
@@ -506,8 +529,8 @@ export function Home() {
             How a week works
           </h2>
           <p className="home__section-lede">
-            Planning, shopping, and cooking stay on one loop, so the list matches the plan and the
-            fridge stays in the picture.
+            Planning, shopping, and cooking stay on one loop, so the list matches the plan and
+            everyone stays on the same page.
           </p>
         </div>
         <ol className="home__steps">
